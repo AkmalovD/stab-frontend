@@ -1,0 +1,17 @@
+FRONT-END:
+
+- change selectors in whole project
+- add animations to landing page
+- fix redirections in "Why Choose SATB" section
+- create logic for footer section
+- change testimonials UI
+- change UI in "Schoolarships" section (show less)
+- fix UI issues in "Events" section 
+- add "Back" button in main feature
+- redo UI of main feature, less colors and emojis
+- complete login work-flow
+
+BACK-END:
+
+- debug "Failed to save profile" while creating journey
+- manage login work-flow
