@@ -71,6 +71,10 @@ const JourneyPlannerPage: React.FC = () => {
     setShowOnboarding(false);
   };
 
+  const handleOnboardingCancel = () => {
+    setShowOnboarding(false);
+  };
+
   const handleStartPlanning = () => {
     setShowOnboarding(true);
   };
@@ -271,7 +275,7 @@ const JourneyPlannerPage: React.FC = () => {
       <Footer />
 
       {/* Onboarding Modal */}
-      <OnboardingModal isOpen={showOnboarding} onComplete={handleOnboardingComplete} />
+      <OnboardingModal isOpen={showOnboarding} onComplete={handleOnboardingComplete} onCancel={handleOnboardingCancel} />
     </>
   );
 };

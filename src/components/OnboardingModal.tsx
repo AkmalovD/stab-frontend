@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { JourneyProfile } from '../types';
 import { toast } from 'sonner';
 import { journeyProfileApi } from '../services/api';
-import { create } from 'domain';
 
 interface OnboardingModalProps {
   isOpen: boolean;
@@ -194,19 +193,24 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete, o
 
         {/* Footer */}
         <div className="p-6 border-t border-gray-200 flex items-center justify-between">
-          <button
-            onClick={handleCancel}
-            className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
-          >
-            ← Cancel
-          </button>
-          <button
-            onClick={handleBack}
-            disabled={step === 1}
-            className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
-          >
-            ← Back
-          </button>
+          <div>
+            {step === 1 && (
+              <button
+                onClick={handleCancel}
+                className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors font-semibold"
+              >
+                ← Cancel
+              </button>
+            )}
+            {step > 1 && (
+              <button
+                onClick={handleBack}
+                className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors font-semibold"
+              >
+                ← Back
+              </button>
+            )}
+          </div>
           <button
             onClick={handleNext}
             disabled={!isStepValid()}

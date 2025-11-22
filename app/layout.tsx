@@ -6,6 +6,9 @@ import { AuthProvider } from '@/auth/AuthContext'
 export const metadata: Metadata = {
   title: 'STAB - Study Abroad Budget & Planning Platform',
   description: 'A comprehensive study abroad planning application with city comparison and interactive features',
+  icons: {
+    icon: '/logo.svg',
+  },
 }
 
 export default function RootLayout({

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const Header: React.FC = () => {
@@ -21,17 +22,21 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eff3] px-10 py-3 bg-white shadow-md backdrop-blur-sm">
-      <div className="flex items-center gap-4 text-[#0d171b]">
-        <div className="w-8 h-8">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 15.99L12 18.72L7 15.99V12.27L12 15L17 12.27V15.99Z" fill="currentColor"/>
-          </svg>
+      <div className="flex items-center text-[#0d171b]">
+        <div className="w-18 h-18 relative">
+          <Image 
+            src="/logo.svg" 
+            alt="STAB Logo" 
+            width={56} 
+            height={56}
+            className="object-contain"
+          />
         </div>
         <Link 
           href="/" 
           className="text-[#0d171b] text-lg font-bold leading-tight tracking-[-0.015em] hover:text-[#4c809a] transition-colors duration-200"
         >
-          Study Abroad Planner
+          STAB
         </Link>
       </div>
       
