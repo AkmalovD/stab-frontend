@@ -7,9 +7,10 @@ import { create } from 'domain';
 interface OnboardingModalProps {
   isOpen: boolean;
   onComplete: (profile: JourneyProfile) => void;
+  onCancel: () => void;
 }
 
-const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete }) => {
+const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete, onCancel }) => {
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState<Partial<JourneyProfile>>({
     name: '',
@@ -57,6 +58,10 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete })
       setStep(step - 1);
     }
   };
+
+  const handleCancel = () => {
+    onCancel()
+  }
 
   const isStepValid = () => {
     if (step === 1) return profile.name && profile.name.length > 0;
@@ -190,6 +195,12 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete })
         {/* Footer */}
         <div className="p-6 border-t border-gray-200 flex items-center justify-between">
           <button
+            onClick={handleCancel}
+            className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+          >
+            ← Cancel
+          </button>
+          <button
             onClick={handleBack}
             disabled={step === 1}
             className="px-6 py-3 text-gray-600 hover:text-[#0d98ba] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
@@ -201,7 +212,7 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete })
             disabled={!isStepValid()}
             className="px-8 py-3 bg-[#0d98ba] text-white rounded-lg font-semibold hover:bg-[#0d171b] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {step === 3 ? 'Start My Journey 🚀' : 'Next →'}
+            {step === 3 ? 'Start My Journey' : 'Next →'}
           </button>
         </div>
       </div>
