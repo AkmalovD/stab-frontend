@@ -16,6 +16,7 @@ FRONT-END:
 - add profile page
 - change logo in browser
 - add profile picture icon to nav when user logged in
+- route profile page properly
 
 BACK-END:
 

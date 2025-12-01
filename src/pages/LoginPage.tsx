@@ -18,17 +18,69 @@ const LoginPage: React.FC = () => {
 
   const { login, user } = useAuth()
 
+  const validateForm =(): boolean => {
+    const result = loginSchema.safeParse({
+        email,
+        password,
+        rememberMe
+    })
+
+    if (result.success) {
+        setErrors({})
+        return true
+    }
+
+    const fieldErrors = result.error.flatten().fieldErrors
+
+    setErrors({
+    email: fieldErrors.email?.[0],
+    password: fieldErrors.password?.[0],
+    });
+  
+    return false;
+  } 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Валидация формы с Zod
+    if (!validateForm()) {
+      return; // Останавливаем отправку, если есть ошибки
+    }
     
     const result = await login(email, password)
 
+    setIsLoading(false)
+
     if (result.error) {
-      alert(result.error)
+    // Показываем ошибки от Firebase под соответствующим полем
+    if (result.error.includes('email') || result.error.includes('найден')) {
+      setErrors({ email: result.error });
+    } else if (result.error.includes('пароль')) {
+      setErrors({ password: result.error });
     } else {
-      window.location.href = '/'
+      // Общая ошибка - показываем под паролем
+      setErrors({ password: result.error });
     }
+  } else {
+    window.location.href = '/';
+  }
   };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+    if(errors.email) {
+      setErrors({ ...errors, email: undefined })
+    }
+  }
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value)
+    if (errors.password) {
+      setErrors({ ...errors, email: undefined})
+    }
+  }
+
 
   return (
     <>
@@ -53,11 +105,23 @@ const LoginPage: React.FC = () => {
                   type="email"
                   id="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d98ba] focus:border-[#0d98ba] transition-colors"
+                  onChange={handleEmailChange}
+                  className={`w-full px-4 py-2 border rounded-lg transition-colors ${
+                    errors.email 
+                      ? 'border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-2 focus:ring-[#0d98ba] focus:border-[#0d98ba]'
+                  }`}
                   placeholder="you@example.com"
-                  required
+                  disabled={isLoading}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500 flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               {/* Password Input */}
@@ -69,11 +133,23 @@ const LoginPage: React.FC = () => {
                   type="password"
                   id="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d98ba] focus:border-[#0d98ba] transition-colors"
+                  onChange={handlePasswordChange}
+                  className={`w-full px-4 py-2 border rounded-lg transition-colors ${
+                    errors.password 
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                    : 'border-gray-300 focus:ring-2 focus:ring-[#0d98ba] focus:border-[#0d98ba]'
+                  }`}
                   placeholder="••••••••"
-                  required
+                  disabled={isLoading}
                 />
+                {errors.password && (
+                  <p className="mt-1 text-sm text-red-500 flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.password}
+                  </p>
+                )}
               </div>
 
               {/* Remember Me & Forgot Password */}
@@ -98,9 +174,10 @@ const LoginPage: React.FC = () => {
               {/* Login Button */}
               <button
                 type="submit"
-                className="w-full bg-[#0d98ba] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0284c7] transition-colors"
+                disabled={isLoading}
+                className="w-full bg-[#0d98ba] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0284c7] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                {isLoading ? 'Выполняется вход...' : 'Sign In'}
               </button>
             </form>
 

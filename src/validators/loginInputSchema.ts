@@ -14,26 +14,6 @@ export const loginSchema = z.object({
     rememberMe: z.boolean().optional(),
 })
 
-const validateForm =(): boolean => {
-    const result = loginSchema.safeParse({
-        email,
-        password,
-        rememberMe
-    })
 
-    if (result.success) {
-        setErrors({})
-        return true
-    }
-
-    const fieldErrors = result.error.flatten().fieldErrors
-
-    setErrors({
-    email: fieldErrors.email?.[0],
-    password: fieldErrors.password?.[0],
-    });
-  
-  return false;
-}
 
 export type LoginFormData = z.infer<typeof loginSchema>
