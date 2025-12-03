@@ -175,7 +175,7 @@ const LoginPage: React.FC = () => {
                     Remember me
                   </label>
                 </div>
-                <Link href="/forgot-password" className="text-sm text-[#0d98ba] hover:underline">
+                <Link href="/reset-password" className="text-sm text-[#0d98ba] hover:underline">
                   Forgot password?
                 </Link>
               </div>
