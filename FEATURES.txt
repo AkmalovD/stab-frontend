@@ -21,6 +21,7 @@ FRONT-END:
 - completely remake ui in city comparison ✅
 - devide types in index.ts ✅
 - in featured destinations make dialog module with template to study abroad
+- refactor strucure of the project
 
 BACK-END:
 
