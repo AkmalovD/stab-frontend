@@ -33,7 +33,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sf-pro)', 'Inter', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sf: ['var(--font-sf-pro)', 'system-ui', 'sans-serif'],
       },
     },
   },
