@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import React, { useCallback, useState } from 'react';
 import { debounce, validateSearchQuery } from '../utils/calculations';
 import { searchCities } from '../utils/data';
 
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] mb-4"
+              className="text-white text-5xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] mb-4"
             >
               Plan Your Study Abroad Journey
             </motion.h1>
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-white/90 text-lg @[480px]:text-xl font-medium leading-relaxed mb-8"
+              className="text-white/90 text-xl @[480px]:text-2xl font-medium leading-relaxed mb-8"
             >
               Discover the perfect destination for your international education. Compare cities, universities, and living costs all in one place.
             </motion.p>
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
               </div>
               <input
                 placeholder="Search cities, universities, or countries..."
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d171b] focus:outline-0 focus:ring-0 border border-[#cfdfe7] bg-slate-50 focus:border-[#13a4ec] focus:ring-2 focus:ring-[#13a4ec]/20 h-full placeholder:text-[#4c809a] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal transition-all duration-200"
+                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d171b] focus:outline-0 focus:ring-0 border border-[#cfdfe7] bg-slate-5 h-full placeholder:text-[#4c809a] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal transition-all duration-200"
                 value={searchQuery}
                 onChange={handleSearchInputChange}
                 autoComplete="off"

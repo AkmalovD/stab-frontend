@@ -42,7 +42,7 @@ const CommunityPage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-[80px] px-4 md:px-10 lg:px-40 py-10 bg-[#f8fafc] min-h-screen">
+      <main className="pt-[120px] px-4 md:px-10 lg:px-40 py-10 bg-[#f8fafc] min-h-screen">
         {/* Hero Section */}
         <div className="max-w-7xl mx-auto mb-10">
           <h1 className="text-4xl font-bold text-[#0d171b] mb-4">

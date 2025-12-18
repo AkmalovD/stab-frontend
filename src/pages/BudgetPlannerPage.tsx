@@ -81,7 +81,7 @@ const BudgetPlannerPage: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="flex-1 px-4 sm:px-10 lg:px-20 py-10 mt-16">
+      <main className="flex-1 px-4 md:px-10 lg:px-40 py-10 mt-16 min-h-screen">
         <div className="layout-content-container mx-auto flex max-w-7xl flex-col gap-8">
           {/* Header Section */}
           <div className="flex flex-wrap justify-between gap-4 items-center">
