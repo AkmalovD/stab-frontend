@@ -1,5 +1,5 @@
 import React from 'react';
-import { City } from '../types';
+import { City } from '@/types';
 
 interface CostBreakdownProps {
   cities: City[];

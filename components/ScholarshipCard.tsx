@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scholarship } from '../types';
+import { Scholarship } from '@/types';
 
 interface ScholarshipCardProps {
   scholarship: Scholarship;

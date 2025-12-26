@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document } from '../types';
+import { Document } from '@/types';
 
 interface DocumentStatusProps {
   documents: Document[];

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useState } from 'react';
-import { debounce, validateSearchQuery } from '../utils/calculations';
-import { searchCities } from '../utils/data';
+import { debounce, validateSearchQuery } from '@/utils/calculations';
+import { searchCities } from '@/utils/data';
 
 const Hero: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');

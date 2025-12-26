@@ -1,5 +1,5 @@
 import React from 'react';
-import { ForumPost } from '../types';
+import { ForumPost } from '@/types';
 
 interface ForumPostCardProps {
   post: ForumPost;

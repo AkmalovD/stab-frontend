@@ -1,5 +1,5 @@
 import React from 'react';
-import { StudentStory } from '../types';
+import { StudentStory } from '@/types';
 
 interface StoryCardProps {
   story: StudentStory;

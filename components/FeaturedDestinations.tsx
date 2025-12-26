@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { citiesData } from '../utils/data';
+import { citiesData } from '@/utils/data';
 import { motion } from 'framer-motion';
 
 interface DestinationCardProps {

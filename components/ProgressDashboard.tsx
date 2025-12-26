@@ -1,6 +1,6 @@
 import React from 'react';
-import { Phase } from '../types';
-import { calculateOverallProgress, getDaysUntilDate } from '../utils/journeyData';
+import { Phase } from '@/types';
+import { calculateOverallProgress, getDaysUntilDate } from '@/utils/journeyData';
 
 interface ProgressDashboardProps {
   phases: Phase[];

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { City } from '../types';
-import { citiesData, searchCities } from '../utils/data';
+import { City } from '@/types';
+import { citiesData, searchCities } from '@/utils/data';
 import CityCard from './CityCard';
 import CostBreakdown from './CostBreakdown';
 import CurrencyConverter from './CurrencyConverter';

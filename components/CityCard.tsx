@@ -1,5 +1,5 @@
 import React from 'react';
-import { CityCardProps } from '../types';
+import { CityCardProps } from '@/types';
 
 const CityCard: React.FC<CityCardProps> = ({ city, isSelected, onSelect }) => {
   return (

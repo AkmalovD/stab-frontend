@@ -13,45 +13,81 @@ A comprehensive web application to help students plan their study abroad journey
 
 ## Tech Stack
 
+- **Framework**: Next.js 15.0.0 with App Router
 - **Frontend**: React 18.3.1 with TypeScript
 - **Styling**: Tailwind CSS 3.4.4
-- **Routing**: React Router DOM 6.28.0
-- **Build Tool**: Vite
+- **Authentication**: Firebase Auth
+- **Backend**: Firebase Data Connect
+- **Notifications**: Sonner
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Validation**: Zod
 - **Code Quality**: ESLint + Prettier
 
 ## Project Structure
 
 ```
-STAB/
-├── public/
+frontend/
+├── app/                     # Next.js App Router pages
+│   ├── layout.tsx          # Root layout with AuthProvider
+│   ├── page.tsx            # Home page
+│   ├── globals.css         # Global styles
+│   ├── login/              # Authentication pages
+│   ├── sign-up/
+│   ├── reset-password/
+│   ├── profile/            # User profile page
+│   ├── budget/             # Budget planning page
+│   ├── compare/            # City comparison page
+│   ├── plan-journey/       # Journey planning page
+│   ├── scholarships/       # Scholarships page
+│   └── community/          # Community page
 ├── src/
-│   ├── components/          # Reusable UI components
+│   ├── auth/               # Firebase authentication
+│   │   ├── AuthContext.tsx
+│   │   ├── firebase.ts
+│   │   ├── login.ts
+│   │   ├── register.ts
+│   │   ├── resetPassword.ts
+│   │   └── socialAuth.ts
+│   ├── components/         # Reusable UI components
 │   │   ├── Header.tsx
+│   │   ├── Footer.tsx
 │   │   ├── Hero.tsx
 │   │   ├── CityCard.tsx
 │   │   ├── CityComparison.tsx
 │   │   ├── CostBreakdown.tsx
 │   │   ├── CurrencyConverter.tsx
-│   │   ├── VisualComparison.tsx
-│   │   └── Features.tsx
-│   ├── pages/               # Page components
-│   │   ├── HomePage.tsx
-│   │   ├── ComparisonPage.tsx
-│   │   ├── ScholarshipsPage.tsx
-│   │   └── CommunityPage.tsx
-│   ├── types/               # TypeScript type definitions
-│   │   └── index.ts
-│   ├── utils/               # Utility functions
+│   │   ├── ProtectedRoute.tsx
+│   │   └── ... (more components)
+│   ├── types/              # TypeScript type definitions
+│   │   ├── index.ts
+│   │   ├── user.ts
+│   │   ├── city.ts
+│   │   ├── scholarship.ts
+│   │   └── ... (more types)
+│   ├── utils/              # Utility functions
 │   │   ├── calculations.ts
-│   │   └── data.ts
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
+│   │   ├── data.ts
+│   │   └── ... (more utils)
+│   ├── validators/         # Zod validation schemas
+│   │   ├── loginInputSchema.ts
+│   │   ├── registerInputSchema.ts
+│   │   └── resetPasswordSchema.ts
+│   ├── services/           # API services
+│   │   └── profileApi.ts
+│   └── dataconnect-generated/  # Firebase Data Connect generated code
+├── public/                 # Static assets
+│   ├── fonts/              # SF Pro Display font files
+│   └── logo.svg
+├── dataconnect/            # Firebase Data Connect configuration
+│   ├── schema/
+│   └── dataconnect.yaml
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.js
 ├── postcss.config.js
-└── vite.config.ts
+├── next.config.mjs
+└── .env.example            # Environment variables template
 ```
 
 ## Getting Started
@@ -74,20 +110,26 @@ STAB/
    npm install
    ```
 
-3. Start the development server:
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Then fill in your Firebase configuration values in `.env.local`.
+
+4. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+5. Open your browser and navigate to `http://localhost:3000`
 
 ## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
-- `npm run preview` - Preview production build
+- `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run lint:fix` - Fix ESLint errors
+- `npm run lint:fix` - Fix ESLint errors automatically
 - `npm run format` - Format code with Prettier
 
 ## Key Features Explained

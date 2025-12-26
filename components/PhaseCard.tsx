@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Phase, Task } from '../types';
-import { getPhaseProgress } from '../utils/journeyData';
+import { Phase, Task } from '@/types';
+import { getPhaseProgress } from '@/utils/journeyData';
 
 interface PhaseCardProps {
   phase: Phase;
